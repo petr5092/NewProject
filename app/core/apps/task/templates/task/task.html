@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+
+{% block body %}
+<div class="container">
+  <div class="card mb-2">
+      <div class="card-header d-flex justify-content-between p-2"> 
+        <div>
+          <a href="/tasks/{{task.pk}}">Задача №{{task.pk}}</a>
+        </div>
+        <div>
+          {% if task not in like %}
+          <span class="badge text-bg-secondary p-2"><a href="/likes/{{task.pk}}"><i class="bi bi-heart">{{task.likes}}</a></i></span> 
+          {% else %}
+          <span class="badge text-bg-secondary p-2"><a href="/like/{{task.pk}}"><i class="bi bi-arrow-through-heart">{{task.likes}}</a></i></span> 
+          {%endif%}
+          {% if task not in bmarks %}
+          <span class="badge text-bg-secondary p-2"><a href="/bmarks/{{task.pk}}"><i class="bi bi-clipboard2-heart"></a></i></span>
+          {% else %}
+          <span class="badge text-bg-secondary p-2"><a href="/bmark/{{task.pk}}"><i class="bi bi-clipboard2-pulse"></a></i></span> 
+          {%endif%}
+        </div>
+      </div>
+      <div class="card-body">
+        {{task.description}}
+      </div>
+      <div class="card-footer p-2"> <span class="badge text-bg-secondary p-2"><a href="/cat/{{task.category.pk}}">Категория №{{task.category.pk}}</a></span></div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+
+{% block body %}
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <form action="{% url 'reg' %}" method="post">
+        {% csrf_token %}
+        <div class="input-group mb-2">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">{{form.username.label}}</span>
+            {{form.username}}
+            {{form.username.errors}}
+        </div>
+        <div class="input-group mb-2">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">{{form.password1.label}}</span>
+            {{form.password1}}
+            {{form.password1.errors}}
+          </div>
+        <div class="input-group mb-2">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">{{form.password2.label}}</span>
+            {{form.password2}}
+            {{form.password2.errors}}
+        </div>
+          
+        </div>
+        <button class="btn btn-primary col-12">Создать</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

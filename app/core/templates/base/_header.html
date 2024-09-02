@@ -1,0 +1,16 @@
+
+<button type="button" class="btn btn-outline-primary"><a href="{% url 'main' %}">Главная</a></button>
+{% if user.is_superuser %}
+<button type="button" class="btn btn-outline-primary"><a href="/add_task">Создать задачу</a></button>
+<button type="button" class="btn btn-outline-primary"><a href="/add_cat">Создать категорию</a></button>
+{%endif%}
+{% if user.is_authenticated %}
+<button type="button" class="btn btn-outline-primary"><a href="/liked">Понравившиеся</a></button>
+<button type="button" class="btn btn-outline-primary"><a href="/bookmarks">Закладки</a></button>
+<button type="button" class="btn btn-outline-primary"><a href="/add_cat">Создать категорию</a></button>
+<button type="button" class="btn btn-outline-primary"><a href="/exit">Выход</a></button>
+{% else %}
+<button type="button" class="btn btn-outline-primary"><a href="/reg">Регистрация</a></button>
+<button type="button" class="btn btn-outline-primary"><a href="/auth">Войти</a></button>
+{%endif%}
+
